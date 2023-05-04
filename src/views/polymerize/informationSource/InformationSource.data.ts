@@ -1,35 +1,38 @@
 import { FormSchema } from '/@/components/Form';
 import { BasicColumn } from '/@/components/Table';
-import { rules} from '/@/utils/helper/validator';
-import { render } from '/@/utils/common/renderUtils';
 
 //列表数据
 export const columns: BasicColumn[] = [
   {
     title: '信源名称',
     align:"center",
-    dataIndex: 'name'
+    dataIndex: 'name',
+    width: 100
   },
   {
     title: '域名',
     align:"center",
-    dataIndex: 'domain'
+    dataIndex: 'domain',
+    width: 100
   },
   {
     title: '协议',
     align:"center",
-    dataIndex: 'scheme'
+    dataIndex: 'scheme',
+    width: 50
   },
   {
     title: '端口',
     align:"center",
-    dataIndex: 'port'
+    dataIndex: 'port',
+    width: 50
   },
   {
     title: '排序',
     align:"center",
     sorter: false,
-    dataIndex: 'rank'
+    dataIndex: 'rank',
+    width: 50
   },
 ];
 

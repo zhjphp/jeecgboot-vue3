@@ -124,6 +124,31 @@ export const rules = {
       },
     ] as ArrayRule;
   },
+  checkJson(required) {
+    return [
+      {
+        // required: required ? required : false,
+        validator: (_, value) => {
+          console.log("checkJson value:" + value)
+          if (required && !value) {
+            return Promise.reject('自定义配置不能为空');
+          }
+          // 如果是json文件,判断格式是否正确
+          if (value) {
+            if (value.startsWith('{') && value.endsWith('}')) {
+              try {
+                JSON.parse(value)
+              } catch (e) {
+                console.log(e)
+                return Promise.reject('JSON 格式错误');
+              }
+            }
+          }
+          return Promise.resolve();
+        },
+      },
+    ];
+  },
 };
 
 //update-begin-author:taoyan date:2022-6-16 for: 代码生成-原生表单用

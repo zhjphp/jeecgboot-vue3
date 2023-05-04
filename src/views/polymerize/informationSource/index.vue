@@ -45,6 +45,8 @@
         </BasicTable>
         <!-- 表单区域 -->
         <InformationSourceModal @register="registerModal" @success="handleSuccess"></InformationSourceModal>
+        <!-- 规则配置 -->
+        <InformationSourceRuleModal ref="informationSourceRuleModalExpose" @register="registerRuleModal" @success="handleRuleSuccess"></InformationSourceRuleModal>
       </div>
     </a-col>
   </a-row>
@@ -61,15 +63,18 @@
   import { useModal } from '/@/components/Modal';
   import InformationSourceModal from './components/InformationSourceModal.vue'
   import { downloadFile } from '/@/utils/common/renderUtils';
+  import InformationSourceRuleModal from './components/InformationSourceRuleModal.vue';
 
   const checkedKeys = ref<Array<string | number>>([]);
   //注册model
   const [registerModal, {openModal}] = useModal();
+  const [registerRuleModal, { openModal: ruleOpenModal, setModalProps }] = useModal();
   // 给子组件定义一个ref变量
   const leftTree = ref();
   // 当前选中的部门code
   const categoryId = ref('');
-
+  // 规则组件暴露
+  const informationSourceRuleModalExpose = ref({});
   //注册table数据
   const { prefixCls,tableContext,onExportXls,onImportXls } = useListPage({
     tableProps:{
@@ -161,6 +166,25 @@
     (selectedRowKeys.value = []) && reload();
   }
   /**
+   * 配置规则事件
+   */
+  function handleRule(record: Recordable) {
+    console.log("handleRule 传值，执行方法")
+    informationSourceRuleModalExpose.value.updateInformationSourceId(record.id);
+    setModalProps({ defaultFullscreen: true, canFullscreen: false });
+    ruleOpenModal(true, {
+      record,
+      isUpdate: true,
+      showFooter: false,
+    });
+  }
+  /**
+   * 配置规则成功回调
+   */
+  function handleRuleSuccess() {
+    console.log("handleRuleSuccess")
+  }
+  /**
    * 操作栏
    */
   function getTableAction(record){
@@ -168,7 +192,11 @@
       {
         label: '编辑',
         onClick: handleEdit.bind(null, record),
-      }
+      },
+      {
+        label: '管理规则',
+        onClick: handleRule.bind(null, record),
+      },
     ]
   }
   /**
