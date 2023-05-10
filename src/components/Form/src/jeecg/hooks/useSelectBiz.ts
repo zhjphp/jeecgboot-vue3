@@ -29,6 +29,7 @@ export function useSelectBiz(getList, props) {
         //update-begin---author:wangshuai ---date:20220412  for：[VUEN-672]发文草稿箱编辑时拟稿人显示用户名------------
         let params = {};
         params[props.rowKey] = selectValues['value'].join(',');
+        params[props.pageSize] = selectValues['value'].length;
         //update-end---author:wangshuai ---date:20220412  for：[VUEN-672]发文草稿箱编辑时拟稿人显示用户名--------------
         loadingEcho.value = isFirstLoadEcho;
         isFirstLoadEcho = false;

@@ -10,6 +10,7 @@ export enum Api {
   loadTreeListByPidCondition = '/polymerize/category/loadTreeListByPidCondition',
 
   list = '/polymerize/informationSource/list',
+  componentList = '/polymerize/informationSource/componentList',
   save='/polymerize/informationSource/add',
   edit='/polymerize/informationSource/edit',
   deleteOne = '/polymerize/informationSource/delete',
@@ -29,6 +30,12 @@ export const loadTreeListByPidCondition = (params?) => defHttp.get({ url: Api.lo
  * @param params
  */
 export const list = (params?) => defHttp.get({ url: Api.list, params });
+
+/**
+ * JSelectInformationSourceByCategory 组件专用接口
+ * @param params
+ */
+export const componentList = (params?) => defHttp.post({ url: Api.componentList, params });
 
 /**
  * 导出api

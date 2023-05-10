@@ -5,19 +5,38 @@ import { render } from '/@/utils/common/renderUtils';
 //列表数据
 export const columns: BasicColumn[] = [
    {
+    title: 'id',
+    align:"center",
+    dataIndex: 'id',
+    width: 180
+   },
+   {
     title: '名称',
     align:"center",
-    dataIndex: 'name'
+    dataIndex: 'name',
+     width: 180
    },
    {
     title: '仓库地址',
     align:"center",
-    dataIndex: 'codeRepository'
+    dataIndex: 'repository'
+   },
+   // {
+   //  title: '执行指令',
+   //  align:"center",
+   //  dataIndex: 'runCommand'
+   // },
+   {
+    title: '代码分支',
+    align:"center",
+    dataIndex: 'branch',
+     width: 90
    },
    {
-    title: '执行指令',
+    title: '代码版本号',
     align:"center",
-    dataIndex: 'runCommand'
+    dataIndex: 'version',
+     width: 90
    },
    {
     title: '备注',
@@ -40,24 +59,56 @@ export const formSchema: FormSchema[] = [
     label: '名称',
     field: 'name',
     component: 'Input',
+    dynamicRules: ({model,schema}) => {
+          return [
+                 { required: true, message: '请输入名称!'},
+          ];
+     },
   },
   {
     label: '仓库地址',
-    field: 'codeRepository',
+    field: 'repository',
     component: 'Input',
+    dynamicRules: ({model,schema}) => {
+          return [
+                 { required: true, message: '请输入仓库地址!'},
+          ];
+     },
   },
   {
     label: '执行指令',
     field: 'runCommand',
     component: 'Input',
+    dynamicRules: ({model,schema}) => {
+          return [
+                 { required: true, message: '请输入执行指令!'},
+          ];
+     },
+  },
+  {
+    label: '代码分支',
+    field: 'branch',
+    component: 'Input',
+    dynamicRules: ({model,schema}) => {
+          return [
+                 { required: true, message: '请输入代码分支!'},
+          ];
+     },
+  },
+  {
+    label: '代码版本号',
+    field: 'version',
+    component: 'Input',
+    dynamicRules: ({model,schema}) => {
+          return [
+                 { required: true, message: '请输入代码版本号!'},
+          ];
+     },
   },
   {
     label: '备注',
     field: 'remark',
-    component: 'InputTextArea',
-    componentProps: {
-      rows: 3
-    }
+    component: 'Input',
   },
 	// TODO 主键隐藏字段，目前写死为ID
 	{

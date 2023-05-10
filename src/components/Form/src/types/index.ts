@@ -151,4 +151,6 @@ export type ComponentType =
   | 'RangeNumber'
   | 'linkRecordSelect'
   | 'RangeTime'
-  | 'JRangeNumber';
+  | 'JRangeNumber'
+  | 'JSelectInformationSourceByCategory'
+  | 'JSelectCrawl';

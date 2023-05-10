@@ -61,6 +61,8 @@ import JRangeNumber from './jeecg/components/JRangeNumber.vue';
 import UserSelect from './jeecg/components/userSelect/index.vue';
 import JRangeDate from './jeecg/components/JRangeDate.vue'
 import JRangeTime from './jeecg/components/JRangeTime.vue'
+import JSelectInformationSourceByCategory from './jeecg/components/JSelectInformationSourceByCategory.vue';
+import JSelectCrawl from './jeecg/components/JSelectCrawl.vue';
 
 const componentMap = new Map<ComponentType, Component>();
 
@@ -131,6 +133,8 @@ componentMap.set('JRangeNumber', JRangeNumber);
 componentMap.set('UserSelect', UserSelect);
 componentMap.set('RangeDate', JRangeDate);
 componentMap.set('RangeTime', JRangeTime);
+componentMap.set('JSelectInformationSourceByCategory', JSelectInformationSourceByCategory);
+componentMap.set('JSelectCrawl', JSelectCrawl);
 
 export function add(compName: ComponentType, component: Component) {
   componentMap.set(compName, component);
