@@ -5,6 +5,11 @@ import { render } from '/@/utils/common/renderUtils';
 //列表数据
 export const columns: BasicColumn[] = [
    {
+    title: '任务ID',
+    align:"center",
+    dataIndex: 'id'
+   },
+   {
     title: '任务名称',
     align:"center",
     dataIndex: 'name'
