@@ -76,12 +76,25 @@ export const formSchema: FormSchema[] = [
      },
   },
   {
-    label: '执行指令',
+    label: '预处理指令',
+    field: 'preCommand',
+    helpMessage: ['单条指令不要换行,指令间隔使用逗号,爬虫运行指令之前执行,线程安全,用于处理依赖问题,切勿执行爬虫本身,无指令请留空.多条指令换行'],
+    component: 'InputTextArea',
+    componentProps: {
+      rows: 3
+    },
+  },
+  {
+    label: '运行指令',
     field: 'runCommand',
-    component: 'Input',
+    helpMessage: ['单条指令不要换行,指令参数间隔使用逗号,多条指令使用分号间隔(可以换行)'],
+    component: 'InputTextArea',
+    componentProps: {
+      rows: 3
+    },
     dynamicRules: ({model,schema}) => {
           return [
-                 { required: true, message: '请输入执行指令!'},
+                 { required: true, message: '请输入运行指令!'},
           ];
      },
   },

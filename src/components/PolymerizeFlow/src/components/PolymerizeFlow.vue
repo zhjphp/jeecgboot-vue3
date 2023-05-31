@@ -11,7 +11,7 @@
     <!-- 主工作区 -->
     <div class="col-right">
       <div id="drawflow" @drop="drop($event)" @dragover="allowDrop($event)"></div>
-      <div class="btn-export" @click="exportEditor">导出</div>
+      <div class="btn-export" @click="exportEditor">预览</div>
       <div class="btn-clear" @click="clearEditor">清空</div>
       <div class="btn-submit" @click="submitEditor">保存</div>
       <div class="bar-zoom">
@@ -25,15 +25,17 @@
 
   <!-- 查看配置 -->
   <div>
-    <a-modal v-model:visible="dialogVisible" width="50%" title="Export">
-      <span>Data:</span>
-      <pre><code>{{dialogData}}</code></pre>
-      <span class="dialog-footer">
-        <a-button @click="dialogVisible = false">Cancel</a-button>
-        <a-button type="primary" @click="dialogVisible = false"
-        >Confirm</a-button
-        >
+    <a-modal v-model:visible="dialogVisible" width="50%" title="预览">
+      <div style="padding: 30px">
+        <pre><code>{{dialogData}}</code></pre>
+        <span class="dialog-footer">
+<!--        <a-button @click="dialogVisible = false">Cancel</a-button>-->
+          <!--        <a-button type="primary" @click="dialogVisible = false"-->
+          <!--        >Confirm</a-button-->
+          <!--        >-->
       </span>
+      </div>
+
     </a-modal>
   </div>
   <!-- 查看配置 -->

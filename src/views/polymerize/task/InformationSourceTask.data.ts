@@ -24,6 +24,11 @@ export const columns: BasicColumn[] = [
     align:"center",
     dataIndex: 'crawlName'
   },
+  {
+    title: '超时时间',
+    align:"center",
+    dataIndex: 'timeout'
+  },
 ];
 //查询数据
 export const searchFormSchema: FormSchema[] = [
@@ -81,6 +86,17 @@ export const formSchema: FormSchema[] = [
     dynamicRules: ({model,schema}) => {
       return [
         { required: true, message: '请选目标信源!'},
+      ];
+    },
+  },
+  {
+    label: '超时时间',
+    field: 'timeout',
+    helpMessage: ['单位:毫秒,超时后爬虫进程会被强制杀死,防止hang住,0为不限时间'],
+    component: 'InputNumber',
+    dynamicRules: ({model,schema}) => {
+      return [
+        { required: true, message: '请输入超时时间!'},
       ];
     },
   },
