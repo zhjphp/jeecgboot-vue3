@@ -92,8 +92,8 @@ export const formSchema: FormSchema[] = [
      },
   },
   {
-    label: '类全名',
-    field: 'fullClassName',
+    label: 'Bean 名称',
+    field: 'beanName',
     component: 'Input',
     dynamicRules: ({model,schema}) => {
           return [
