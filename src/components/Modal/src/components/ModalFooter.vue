@@ -1,5 +1,9 @@
 <template>
   <div>
+    <slot name="testFooter"></slot>
+    <a-button v-bind="testButtonProps" @click="handleTest" v-if="showTestBtn">
+      {{ testText }}
+    </a-button>
     <slot name="insertFooter"></slot>
     <a-button v-bind="cancelButtonProps" @click="handleCancel" v-if="showCancelBtn">
       {{ cancelText }}
@@ -18,7 +22,7 @@
   export default defineComponent({
     name: 'BasicModalFooter',
     props: basicProps,
-    emits: ['ok', 'cancel'],
+    emits: ['ok', 'cancel', 'test'],
     setup(_, { emit }) {
       function handleOk(e: Event) {
         emit('ok', e);
@@ -28,7 +32,11 @@
         emit('cancel', e);
       }
 
-      return { handleOk, handleCancel };
+      function handleTest(e: Event) {
+        emit('test', e);
+      }
+
+      return { handleOk, handleCancel, handleTest };
     },
   });
 </script>

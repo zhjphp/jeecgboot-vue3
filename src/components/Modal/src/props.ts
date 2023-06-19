@@ -15,6 +15,7 @@ export const modalProps = {
   centered: { type: Boolean },
   cancelText: { type: String, default: t('common.cancelText') },
   okText: { type: String, default: t('common.okText') },
+  testText: { type: String, default: t('common.testText') },
 
   closeFunc: Function as PropType<() => Promise<boolean>>,
 };
@@ -39,6 +40,8 @@ export const basicProps = Object.assign({}, modalProps, {
    * @description: Show confirmation button
    */
   showOkBtn: { type: Boolean, default: true },
+
+  showTestBtn: { type: Boolean, default: false },
 
   wrapperProps: Object as PropType<Partial<ModalWrapperProps>>,
 
@@ -70,6 +73,8 @@ export const basicProps = Object.assign({}, modalProps, {
   okButtonProps: Object as PropType<ButtonProps>,
 
   cancelButtonProps: Object as PropType<ButtonProps>,
+
+  testButtonProps: Object as PropType<ButtonProps>,
 
   title: { type: String },
 

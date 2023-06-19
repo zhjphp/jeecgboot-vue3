@@ -1,7 +1,20 @@
 <template>
-  <BasicModal v-bind="$attrs" @register="registerModal" destroyOnClose :width="800" :title="getTitle" @ok="handleSubmit">
+  <BasicModal v-bind="$attrs" @register="registerModal" destroyOnClose :width="800" :title="getTitle" @ok="handleSubmit" @test="handleTest" :showTestBtn="true">
     <BasicForm @register="registerForm"/>
   </BasicModal>
+
+  <!-- 测试规则 -->
+  <div>
+    <a-modal v-model:visible="dialogVisible" :z-index="9999" width="50%" title="测试规则" :footer="null">
+      <div style="padding: 30px">
+        <pre><code>{{dialogData}}</code></pre>
+        <span class="dialog-footer">
+        <a-button @click="dialogVisible = false">关闭</a-button>
+      </span>
+      </div>
+    </a-modal>
+  </div>
+  <!-- 测试规则 -->
 </template>
 
 <script lang="ts" setup>
@@ -9,6 +22,11 @@ import { ref, computed, unref } from 'vue';
 import { BasicModal, useModalInner } from '/@/components/Modal';
 import { BasicForm, useForm } from '/@/components/Form';
 import { formSchema } from '../ArticleRule.data'
+import {
+  checkArticleRule,
+  checkListRule
+} from "/@/components/PolymerizeFlow/src/components/PolymerizeFlow.api";
+import {useMessage} from "/@/hooks/web/useMessage";
 
 // 获取emit
 const emit = defineEmits(['register', 'success']);
@@ -56,6 +74,34 @@ const [registerModal, {setModalProps, closeModal}] = useModalInner(async (data) 
 
 //设置标题
 const getTitle = computed(() => (!unref(isUpdate) ? '新增配置' : '编辑配置'));
+
+const dialogVisible = ref(false);
+const dialogData = ref({});
+
+const { createMessage } = useMessage();
+const { error } = createMessage;
+
+//测试规则
+async function handleTest() {
+  let values = await validate();
+  dialogData.value = "数据采集中...";
+  dialogVisible.value = true;
+  await checkArticleRule(values).then(
+    (res) => {
+      console.log(res)
+      if (res.success) {
+        dialogData.value = res.result;
+        dialogVisible.value = true;
+      } else {
+        dialogData.value = res.message;
+        dialogVisible.value = true;
+        error(res.message)
+      }
+    }
+  ).catch((err) => {
+    error("checkListRule: " + err.message);
+  });
+}
 
 //表单提交事件
 async function handleSubmit() {

@@ -3,7 +3,22 @@ import {rules} from "/@/utils/helper/validator";
 // import { rules } from "/@/utils/helper/validator";
 
 export const formSchema: FormSchema[] = [
-
+  {
+    label: '测试页URL',
+    helpMessage: '此URL仅用于测试规则',
+    field: 'checkRuleUrl',
+    required: false,
+    component: 'Input',
+  },
+  {
+    label: '固定单页采集',
+    field: 'singleFlag',
+    required: true,
+    component: 'JSwitch',
+    componentProps:{
+      options: [true, false],
+    },
+  },
   {
     label: '稿件url匹配',
     field: 'urlMatch',

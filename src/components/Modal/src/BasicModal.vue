@@ -9,7 +9,7 @@
     </template>
 
     <template #footer v-if="!$slots.footer">
-      <ModalFooter v-bind="getBindValue" @ok="handleOk" @cancel="handleCancel">
+      <ModalFooter v-bind="getBindValue" @ok="handleOk" @cancel="handleCancel" @test="handleTest">
         <template #[item]="data" v-for="item in Object.keys($slots)">
           <slot :name="item" v-bind="data || {}"></slot>
         </template>
@@ -69,7 +69,7 @@
     components: { Modal, ModalWrapper, ModalClose, ModalFooter, ModalHeader },
     inheritAttrs: false,
     props: basicProps,
-    emits: ['visible-change', 'height-change', 'cancel', 'ok', 'register', 'update:visible'],
+    emits: ['visible-change', 'height-change', 'cancel', 'ok', 'register', 'update:visible', 'test'],
     setup(props, { emit, attrs , slots}) {
       const visibleRef = ref(false);
       const propsRef = ref<Partial<ModalProps> | null>(null);
@@ -206,6 +206,10 @@
         emit('ok', e);
       }
 
+      function handleTest(e: Event) {
+        emit('test', e);
+      }
+
       function handleHeightChange(height: string) {
         emit('height-change', height);
       }
@@ -235,6 +239,7 @@
       //update-end-author:taoyan date:2022-7-18 for: modal支持评论 slot
 
       return {
+        handleTest,
         handleCancel,
         getBindValue,
         getProps,

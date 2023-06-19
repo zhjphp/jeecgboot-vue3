@@ -1,4 +1,5 @@
 export default {
+  testText: '测试',
   okText: '确认',
   closeText: '关闭',
   cancelText: '取消',

@@ -15,7 +15,13 @@ export const formSchema: FormSchema[] = [
   //   },
   //   colProps: { span: 6 },
   // },
-
+  {
+    label: '测试页URL',
+    helpMessage: '此URL仅用于测试规则',
+    field: 'checkRuleUrl',
+    required: false,
+    component: 'Input',
+  },
   {
     label: '起始URL集合',
     helpMessage: '填入完整URL，多个之间用逗号间隔，回车可换行',
@@ -28,17 +34,55 @@ export const formSchema: FormSchema[] = [
     }
   },
   {
-    label: '通用分页匹配',
+    label: '有效天数',
+    helpMessage: '从当前时间开始往前[设定天数]内的数据,0为不限制',
+    field: 'effectiveDays',
+    required: true,
+    component: 'InputNumber',
+    defaultValue: 1
+  },
+  {
+    label: '起始时间',
+    helpMessage: '时间段设定优先于有效天数',
+    field: 'startTime',
+    required: false,
+    component: 'DatePicker',
+    componentProps: {
+      showTime: true,
+      valueFormat: 'YYYY-MM-DD HH:mm:ss',
+      placeholder: '请选起始时间',
+    },
+  },
+  {
+    label: '截止时间',
+    helpMessage: '时间段设定优先于有效天数',
+    field: 'endTime',
+    required: false,
+    component: 'DatePicker',
+    componentProps: {
+      showTime: true,
+      valueFormat: 'YYYY-MM-DD HH:mm:ss',
+      placeholder: '请选择截止时间',
+    },
+  },
+  {
+    label: '列表区块匹配',
     field: 'pageMatch',
     required: false,
     component: 'Input',
   },
   {
-    label: '上一页按钮匹配',
-    field: 'preMatch',
+    label: '总页数匹配',
+    field: 'totalPageMatch',
     required: false,
     component: 'Input',
   },
+  // {
+  //   label: '上一页按钮匹配',
+  //   field: 'preMatch',
+  //   required: false,
+  //   component: 'Input',
+  // },
   {
     label: '下一页按钮匹配',
     field: 'nextMatch',

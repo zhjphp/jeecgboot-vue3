@@ -1,4 +1,5 @@
 export default {
+  testText: 'test',
   okText: 'OK',
   closeText: 'Close',
   cancelText: 'Cancel',

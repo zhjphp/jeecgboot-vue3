@@ -42,7 +42,7 @@
 </template>
 
 <script>
-// TODO: 信源规则配置进入时,连接点会有错乱(CSS样式问题)
+// TODO: 信源规则配置进入时,连接点会有错乱(CSS样式问题) https://github.com/jerosoler/Drawflow/issues/408
 
 import 'drawflow/dist/drawflow.min.css'
 import '../assets/drawflow.css'
@@ -50,7 +50,9 @@ import '../assets/beautiful.css'
 // import '../assets/google.css'
 // import '../assets/font-awesome.css'
 
-import Drawflow from 'drawflow'
+// import Drawflow from 'drawflow'
+import { DrawflowOverride } from './DrawflowOverride'
+
 import {
   onMounted,
   shallowRef,
@@ -103,7 +105,7 @@ export default defineComponent (
           color: '#ff9900',
           item: 'ArticleRuleNode',
           input:1,
-          output:1
+          output:0
         },
       ])
       const editor = shallowRef({});
@@ -196,7 +198,7 @@ export default defineComponent (
         }
 
         const id = document.getElementById("drawflow");
-        editor.value = new Drawflow(id, Vue, internalInstance.appContext.app._context);
+        editor.value = new DrawflowOverride(id, Vue, internalInstance.appContext.app._context);
         editor.value.start();
 
         editor.value.registerNode('StartNode', StartNode, {}, {});
@@ -259,6 +261,26 @@ export default defineComponent (
         })
         editor.value.on('connectionCreated', function(connection) {
           console.log('Connection created');
+          console.log(connection);
+
+          // 限定输出或者输入的链接数量, https://github.com/jerosoler/Drawflow/issues/35
+          // 限定一个输出
+          const outputNodeInfo = editor.value.getNodeFromId(connection.output_id);
+          const inputNodeInfo = editor.value.getNodeFromId(connection.input_id);
+          if(outputNodeInfo.outputs[connection.output_class].connections.length > 1) {
+            const removeConnectionInfo = outputNodeInfo.outputs[connection.output_class].connections[0];
+            alert("【开始节点】和【列表采集节点】后只能链接一个节点")
+            editor.value.removeSingleConnection(connection.output_id, removeConnectionInfo.node, connection.output_class, removeConnectionInfo.output);
+          }
+          // 限定一个输入
+          // const inputNodeInfo = editor.value.getNodeFromId(connection.input_id);
+          // if(inputNodeInfo.inputs[connection.input_class].connections.length > 1) {
+          //   const removeConnectionInfo = inputNodeInfo.inputs[connection.input_class].connections[0];
+          //   editor.value.removeSingleConnection(removeConnectionInfo.node, connection.input_id, removeConnectionInfo.input, connection.input_class);
+          // }
+        })
+        editor.value.on('clickEnd', function(connection) {
+          console.log('clickEnd');
           console.log(connection);
         })
         editor.value.on('connectionRemoved', function(connection) {
