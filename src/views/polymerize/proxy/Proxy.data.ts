@@ -77,7 +77,7 @@ export const formSchema: FormSchema[] = [
     },
     dynamicRules: ({model,schema}) => {
           return [
-                 { required: true, message: '请输入代理类型!'},
+                 { required: true, message: '请选择代理类型!'},
           ];
      },
   },

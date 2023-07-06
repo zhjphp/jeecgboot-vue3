@@ -66,16 +66,89 @@ export const formSchema: FormSchema[] = [
     },
   },
   {
+    label: '是否为瀑布流',
+    field: 'waterfallFlag',
+    required: false,
+    component: 'JSwitch',
+    componentProps:{
+      options: [true, false],
+    },
+  },
+  {
+    label: '瀑布流下拉屏数',
+    field: 'waterfallPageCount',
+    required: false,
+    component: 'InputNumber',
+  },
+  {
+    label: '瀑布流结束匹配',
+    helpMessage: '此项仅可使用xpath匹配',
+    field: 'waterfallBottomMatch',
+    required: false,
+    component: 'Input',
+  },
+  {
     label: '列表区块匹配',
+    helpMessage: '此项仅可使用xpath匹配',
     field: 'pageMatch',
     required: false,
     component: 'Input',
   },
   {
+    label: '是否爬取外链',
+    field: 'enableOutside',
+    required: false,
+    component: 'JSwitch',
+    componentProps:{
+      options: [true, false],
+    },
+  },
+  {
+    label: '稿件url匹配',
+    helpMessage: '填写针对列表区块内的匹配规则',
+    field: 'articleUrlMatch',
+    required: false,
+    component: 'InputTextArea',
+    componentProps: {
+      autosize: true,
+    }
+  },
+  {
+    label: '稿件标题匹配',
+    helpMessage: '填写针对列表区块内的匹配规则',
+    field: 'articleTitleMatch',
+    required: false,
+    component: 'InputTextArea',
+    componentProps: {
+      autosize: true,
+    }
+  },
+  {
+    label: '稿件日期匹配',
+    helpMessage: '填写针对列表区块内的匹配规则',
+    field: 'articleDateMatch',
+    required: false,
+    component: 'InputTextArea',
+    componentProps: {
+      autosize: true,
+    }
+  },
+  {
+    label: '翻页深度',
+    helpMessage: '填写此项后,总页数匹配将失效',
+    field: 'pageDepth',
+    required: false,
+    component: 'InputNumber',
+  },
+  {
     label: '总页数匹配',
+    helpMessage: '配置翻页深度,此项将失效',
     field: 'totalPageMatch',
     required: false,
-    component: 'Input',
+    component: 'InputTextArea',
+    componentProps: {
+      autosize: true,
+    }
   },
   // {
   //   label: '上一页按钮匹配',
@@ -87,25 +160,10 @@ export const formSchema: FormSchema[] = [
     label: '下一页按钮匹配',
     field: 'nextMatch',
     required: false,
-    component: 'Input',
-  },
-  {
-    label: '稿件url匹配',
-    field: 'articleUrlMatch',
-    required: true,
-    component: 'Input',
-  },
-  {
-    label: '稿件标题匹配',
-    field: 'articleTitleMatch',
-    required: false,
-    component: 'Input',
-  },
-  {
-    label: '稿件日期匹配',
-    field: 'articleDateMatch',
-    required: false,
-    component: 'Input',
+    component: 'InputTextArea',
+    componentProps: {
+      autosize: true,
+    }
   },
   {
     label: '自定义配置',

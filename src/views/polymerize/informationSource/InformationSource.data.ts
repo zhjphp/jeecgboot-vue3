@@ -4,6 +4,12 @@ import { BasicColumn } from '/@/components/Table';
 //列表数据
 export const columns: BasicColumn[] = [
   {
+    title: 'id',
+    align:"center",
+    dataIndex: 'id',
+    width: 100
+  },
+  {
     title: '信源名称',
     align:"center",
     dataIndex: 'name',

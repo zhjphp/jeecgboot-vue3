@@ -17,6 +17,11 @@ export const columns: BasicColumn[] = [
      width: 180
    },
    {
+    title: '爬虫类型',
+    align:"center",
+    dataIndex: 'type_dictText'
+   },
+   {
     title: '仓库地址',
     align:"center",
     dataIndex: 'repository'
@@ -66,8 +71,23 @@ export const formSchema: FormSchema[] = [
      },
   },
   {
+    label: '爬虫类型',
+    field: 'type',
+    component: 'JDictSelectTag',
+    componentProps: {
+      dictCode:'crawl_type',
+      stringToNumber: true,
+    },
+    dynamicRules: ({model,schema}) => {
+      return [
+        { required: true, message: '请选择爬虫类型!'},
+      ];
+    },
+  },
+  {
     label: '仓库地址',
     field: 'repository',
+    helpMessage: ['独立爬虫必须填写仓库地址,内置爬虫填写"无"即可'],
     component: 'Input',
     dynamicRules: ({model,schema}) => {
           return [
@@ -78,7 +98,7 @@ export const formSchema: FormSchema[] = [
   {
     label: '预处理指令',
     field: 'preCommand',
-    helpMessage: ['单条指令不要换行,指令间隔使用逗号,爬虫运行指令之前执行,线程安全,用于处理依赖问题,切勿执行爬虫本身,无指令请留空.多条指令换行'],
+    helpMessage: ['单条指令不要换行,指令间隔使用逗号,爬虫运行指令之前执行,线程安全,用于处理依赖问题,切勿执行爬虫本身,无指令请留空.多条指令换行,内置爬虫填写"无"即可'],
     component: 'InputTextArea',
     componentProps: {
       rows: 3
@@ -87,7 +107,7 @@ export const formSchema: FormSchema[] = [
   {
     label: '运行指令',
     field: 'runCommand',
-    helpMessage: ['单条指令不要换行,指令参数间隔使用逗号,多条指令使用分号间隔(可以换行)'],
+    helpMessage: ['单条指令不要换行,指令参数间隔使用逗号,多条指令使用分号间隔(可以换行),内置爬虫填写"无"即可'],
     component: 'InputTextArea',
     componentProps: {
       rows: 3
@@ -101,6 +121,7 @@ export const formSchema: FormSchema[] = [
   {
     label: '代码分支',
     field: 'branch',
+    helpMessage: ['内置爬虫填写"无"即可'],
     component: 'Input',
     dynamicRules: ({model,schema}) => {
           return [
@@ -111,6 +132,7 @@ export const formSchema: FormSchema[] = [
   {
     label: '代码版本号',
     field: 'version',
+    helpMessage: ['内置爬虫填写"无"即可'],
     component: 'Input',
     dynamicRules: ({model,schema}) => {
           return [

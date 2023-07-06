@@ -267,9 +267,10 @@ export default defineComponent (
           // 限定一个输出
           const outputNodeInfo = editor.value.getNodeFromId(connection.output_id);
           const inputNodeInfo = editor.value.getNodeFromId(connection.input_id);
-          if(outputNodeInfo.outputs[connection.output_class].connections.length > 1) {
+          // 开始节点后只能跟一个节点
+          if(outputNodeInfo.class == "StartNode" && outputNodeInfo.outputs[connection.output_class].connections.length > 1) {
             const removeConnectionInfo = outputNodeInfo.outputs[connection.output_class].connections[0];
-            alert("【开始节点】和【列表采集节点】后只能链接一个节点")
+            alert("【开始节点】后只能链接一个节点")
             editor.value.removeSingleConnection(connection.output_id, removeConnectionInfo.node, connection.output_class, removeConnectionInfo.output);
           }
           // 限定一个输入

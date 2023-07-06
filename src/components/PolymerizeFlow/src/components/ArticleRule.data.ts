@@ -20,15 +20,10 @@ export const formSchema: FormSchema[] = [
     },
   },
   {
-    label: '稿件url匹配',
-    field: 'urlMatch',
-    required: true,
-    component: 'Input',
-  },
-  {
-    label: '稿件标题匹配',
-    field: 'titleMatch',
-    required: true,
+    label: '单页采集URL',
+    helpMessage: '此项仅用于单页固定采集',
+    field: 'singleUrl',
+    required: false,
     component: 'Input',
   },
   {
@@ -38,15 +33,30 @@ export const formSchema: FormSchema[] = [
     component: 'Input',
   },
   {
-    label: '稿件关键词匹配',
-    field: 'keywordsMatch',
+    label: '查看更多匹配',
+    helpMessage: '此项仅可使用xpath匹配',
+    field: 'moreButtonMatch',
     required: false,
     component: 'Input',
   },
+  // {
+  //   label: '稿件关键词匹配',
+  //   field: 'keywordsMatch',
+  //   required: false,
+  //   component: 'Input',
+  //   defaultValue: '//meta[@name=\'keywords\']',
+  // },
+  // {
+  //   label: '稿件描述匹配',
+  //   field: 'descriptionMatch',
+  //   required: false,
+  //   component: 'Input',
+  //   defaultValue: '//meta[@name=\'description\']',
+  // },
   {
-    label: '稿件描述匹配',
-    field: 'descriptionMatch',
-    required: false,
+    label: '稿件标题匹配',
+    field: 'titleMatch',
+    required: true,
     component: 'Input',
   },
   {
@@ -58,7 +68,7 @@ export const formSchema: FormSchema[] = [
   {
     label: '稿件日期匹配',
     field: 'dateMatch',
-    required: true,
+    required: false,
     component: 'Input',
   },
   {
