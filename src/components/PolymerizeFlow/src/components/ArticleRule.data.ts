@@ -11,6 +11,16 @@ export const formSchema: FormSchema[] = [
     component: 'Input',
   },
   {
+    label: '自定义标签',
+    helpMessage: '手工打标',
+    field: 'customTags',
+    required: true,
+    component: 'JSwitch',
+    componentProps:{
+      options: [true, false],
+    },
+  },
+  {
     label: '固定单页采集',
     field: 'singleFlag',
     required: true,
@@ -53,6 +63,12 @@ export const formSchema: FormSchema[] = [
   //   component: 'Input',
   //   defaultValue: '//meta[@name=\'description\']',
   // },
+  {
+    label: '栏目匹配',
+    field: 'topicMatch',
+    required: false,
+    component: 'Input',
+  },
   {
     label: '稿件标题匹配',
     field: 'titleMatch',
