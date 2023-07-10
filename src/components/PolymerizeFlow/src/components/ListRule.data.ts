@@ -75,6 +75,12 @@ export const formSchema: FormSchema[] = [
     },
   },
   {
+    label: '查看更多',
+    field: 'moreMatch',
+    required: false,
+    component: 'Input',
+  },
+  {
     label: '瀑布流下拉屏数',
     field: 'waterfallPageCount',
     required: false,

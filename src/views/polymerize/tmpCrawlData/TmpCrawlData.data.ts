@@ -22,11 +22,11 @@ export const columns: BasicColumn[] = [
       return !text?"":(text.length>10?text.substr(0,10):text)
     },
    },
-   {
-    title: '来源',
-    align:"center",
-    dataIndex: 'source'
-   },
+   // {
+   //  title: '来源',
+   //  align:"center",
+   //  dataIndex: 'source'
+   // },
    {
     title: '信源ID',
     align:"center",
@@ -45,7 +45,7 @@ export const columns: BasicColumn[] = [
    {
     title: '错误数据',
     align:"center",
-    dataIndex: 'errorFlag'
+    dataIndex: 'errorCode'
    },
 ];
 //查询数据
