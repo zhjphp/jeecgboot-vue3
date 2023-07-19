@@ -1,5 +1,5 @@
 <template>
-  <a-row :class="['p-4', `${prefixCls}--box`]" type="flex" :gutter="10" style="max-height: 800px">
+  <a-row :class="['p-4', `${prefixCls}--box`]" type="flex" :gutter="10">
     <a-col :xl="6" :lg="24" :md="24" style="margin-bottom: 10px">
       <DepartLeftTree ref="leftTree" @select="onTreeSelect" />
     </a-col>
@@ -65,6 +65,9 @@
   import { downloadFile } from '/@/utils/common/renderUtils';
   import InformationSourceRuleModal from './components/InformationSourceRuleModal.vue';
 
+  const { prefixCls } = useDesign('depart-manage');
+  provide('prefixCls', prefixCls);
+
   const checkedKeys = ref<Array<string | number>>([]);
   //注册model
   const [registerModal, {openModal}] = useModal();
@@ -76,7 +79,7 @@
   // 规则组件暴露
   const informationSourceRuleModalExpose = ref({});
   //注册table数据
-  const { prefixCls,tableContext,onExportXls,onImportXls } = useListPage({
+  const { tableContext,onExportXls,onImportXls } = useListPage({
     tableProps:{
       title: '信源管理',
       api: list,

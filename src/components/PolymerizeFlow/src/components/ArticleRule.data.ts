@@ -14,11 +14,8 @@ export const formSchema: FormSchema[] = [
     label: '自定义标签',
     helpMessage: '手工打标',
     field: 'customTags',
-    required: true,
-    component: 'JSwitch',
-    componentProps:{
-      options: [true, false],
-    },
+    required: false,
+    component: 'Input',
   },
   {
     label: '固定单页采集',
