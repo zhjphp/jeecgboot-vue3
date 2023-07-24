@@ -156,6 +156,26 @@ export const formSchema: FormSchema[] = [
       autosize: true,
     }
   },
+  {
+    label: '稿件总数匹配',
+    helpMessage: '共多少条',
+    field: 'totalCountMatch',
+    required: false,
+    component: 'InputTextArea',
+    componentProps: {
+      autosize: true,
+    }
+  },
+  {
+    label: '指定每页条数',
+    helpMessage: '配合稿件总数计算总页数,如果不指定则自动计算每页总稿件数量',
+    field: 'pageCount',
+    required: false,
+    component: 'InputNumber',
+    componentProps: {
+      autosize: true,
+    }
+  },
   // {
   //   label: '上一页按钮匹配',
   //   field: 'preMatch',
