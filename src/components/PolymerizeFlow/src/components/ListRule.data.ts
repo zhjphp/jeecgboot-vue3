@@ -23,6 +23,14 @@ export const formSchema: FormSchema[] = [
     component: 'Input',
   },
   {
+    label: '测试资源屏蔽',
+    helpMessage: '仅限测试使用,指定不加载的资源后缀',
+    field: 'checkRuleDisableLoadResource',
+    required: false,
+    component: 'Input',
+    defaultValue: '.*?(\\.jpg)|(\\.JPG)|(\\.PNG)|(\\.png)|(\\.mp3)|(\\.MP3)|(\\.mp4)|(\\.MP4)|(\\.webp)|(\\.flv)|(\\.FLV).*?'
+  },
+  {
     label: '起始URL集合',
     helpMessage: '填入完整URL，多个之间用逗号间隔，回车可换行',
     field: 'startUrls',
