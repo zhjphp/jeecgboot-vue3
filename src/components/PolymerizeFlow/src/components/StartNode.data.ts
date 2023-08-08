@@ -6,11 +6,11 @@ export const formSchema: FormSchema[] = [
 
   {
     label: '资源屏蔽',
-    helpMessage: '指定不加载的资源后缀',
+    helpMessage: '指定不加载的资源后缀,如果不指定则默认使用nacos中的配置',
     field: 'disableLoadResource',
-    required: true,
+    required: false,
     component: 'Input',
-    defaultValue: '.*?(\\.jpg)|(\\.JPG)|(\\.PNG)|(\\.png)|(\\.mp3)|(\\.MP3)|(\\.mp4)|(\\.MP4)|(\\.webp)|(\\.flv)|(\\.FLV).*?'
+    defaultValue: ''
   },
 
 ];

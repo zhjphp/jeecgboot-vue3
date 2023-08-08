@@ -16,7 +16,7 @@ export const formSchema: FormSchema[] = [
     field: 'checkRuleDisableLoadResource',
     required: false,
     component: 'Input',
-    defaultValue: '.*?(\\.jpg)|(\\.JPG)|(\\.PNG)|(\\.png)|(\\.mp3)|(\\.MP3)|(\\.mp4)|(\\.MP4)|(\\.webp)|(\\.flv)|(\\.FLV).*?'
+    defaultValue: '.*?(\\.jpg)|(\\.JPG)|(\\.jpeg)|(\\.JPEG)|(\\.PNG)|(\\.png)|(\\.gif)|(\\.GIF)|(\\.mp3)|(\\.MP3)|(\\.mp4)|(\\.MP4)|(\\.webp)|(\\.flv)|(\\.FLV).*?'
   },
   {
     label: '自定义标签',
