@@ -83,10 +83,13 @@ export const formSchema: FormSchema[] = [
     },
   },
   {
-    label: '查看更多',
+    label: '查看更多按钮',
     field: 'moreMatch',
     required: false,
-    component: 'Input',
+    component: 'InputTextArea',
+    componentProps: {
+      autosize: true,
+    }
   },
   {
     label: '瀑布流下拉屏数',
@@ -96,14 +99,15 @@ export const formSchema: FormSchema[] = [
   },
   {
     label: '瀑布流结束匹配',
-    helpMessage: '此项仅可使用xpath匹配',
+    helpMessage: '【停用】',
     field: 'waterfallBottomMatch',
     required: false,
     component: 'Input',
+    show: false,
   },
   {
     label: '列表区块匹配',
-    helpMessage: '此项仅可使用xpath匹配',
+    helpMessage: '此项仅可使用xpath匹配,仅支持单条指令',
     field: 'pageMatch',
     required: false,
     component: 'Input',
