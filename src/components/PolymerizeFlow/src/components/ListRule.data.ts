@@ -24,11 +24,11 @@ export const formSchema: FormSchema[] = [
   },
   {
     label: '测试资源屏蔽',
-    helpMessage: '仅限测试使用,指定不加载的资源后缀',
+    helpMessage: '仅限测试使用,指定不加载的资源后缀,如果为空则使用nacos中的配置',
     field: 'checkRuleDisableLoadResource',
     required: false,
     component: 'Input',
-    defaultValue: '.*?(\\.jpg)|(\\.JPG)|(\\.jpeg)|(\\.JPEG)|(\\.PNG)|(\\.png)|(\\.gif)|(\\.GIF)|(\\.mp3)|(\\.MP3)|(\\.mp4)|(\\.MP4)|(\\.webp)|(\\.flv)|(\\.FLV).*?'
+    // defaultValue: '.*?(\\.jpg)|(\\.JPG)|(\\.jpeg)|(\\.JPEG)|(\\.PNG)|(\\.png)|(\\.gif)|(\\.GIF)|(\\.mp3)|(\\.MP3)|(\\.mp4)|(\\.MP4)|(\\.webp)|(\\.flv)|(\\.FLV).*?'
   },
   {
     label: '起始URL集合',

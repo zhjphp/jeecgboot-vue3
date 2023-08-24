@@ -12,11 +12,11 @@ export const formSchema: FormSchema[] = [
   },
   {
     label: '测试资源屏蔽',
-    helpMessage: '仅限测试使用,指定不加载的资源后缀',
+    helpMessage: '仅限测试使用,指定不加载的资源后缀,如果为空则使用nacos中的配置',
     field: 'checkRuleDisableLoadResource',
     required: false,
     component: 'Input',
-    defaultValue: '.*?(\\.jpg)|(\\.JPG)|(\\.jpeg)|(\\.JPEG)|(\\.PNG)|(\\.png)|(\\.gif)|(\\.GIF)|(\\.mp3)|(\\.MP3)|(\\.mp4)|(\\.MP4)|(\\.webp)|(\\.flv)|(\\.FLV).*?'
+    // defaultValue: '.*?(\\.jpg)|(\\.JPG)|(\\.jpeg)|(\\.JPEG)|(\\.PNG)|(\\.png)|(\\.gif)|(\\.GIF)|(\\.mp3)|(\\.MP3)|(\\.mp4)|(\\.MP4)|(\\.webp)|(\\.flv)|(\\.FLV).*?'
   },
   {
     label: '自定义标签',
@@ -49,15 +49,6 @@ export const formSchema: FormSchema[] = [
     component: 'Input',
   },
   {
-    label: '稿件副标题匹配',
-    field: 'subtitleMatch',
-    required: false,
-    component: 'InputTextArea',
-    componentProps: {
-      autosize: true
-    }
-  },
-  {
     label: '查看更多匹配',
     helpMessage: '此项仅可使用xpath匹配',
     field: 'moreButtonMatch',
@@ -67,20 +58,6 @@ export const formSchema: FormSchema[] = [
       autosize: true
     }
   },
-  // {
-  //   label: '稿件关键词匹配',
-  //   field: 'keywordsMatch',
-  //   required: false,
-  //   component: 'Input',
-  //   defaultValue: '//meta[@name=\'keywords\']',
-  // },
-  // {
-  //   label: '稿件描述匹配',
-  //   field: 'descriptionMatch',
-  //   required: false,
-  //   component: 'Input',
-  //   defaultValue: '//meta[@name=\'description\']',
-  // },
   {
     label: '栏目匹配',
     field: 'topicMatch',
@@ -118,8 +95,8 @@ export const formSchema: FormSchema[] = [
     }
   },
   {
-    label: '稿件出处匹配',
-    field: 'referenceMatch',
+    label: '稿件来源匹配',
+    field: 'sourceMatch',
     required: false,
     component: 'InputTextArea',
     componentProps: {
@@ -127,8 +104,35 @@ export const formSchema: FormSchema[] = [
     }
   },
   {
-    label: '稿件来源匹配',
-    field: 'sourceMatch',
+    label: '关键词匹配',
+    field: 'keywordsMatch',
+    required: false,
+    component: 'InputTextArea',
+    componentProps: {
+      autosize: true
+    }
+  },
+  {
+    label: '描述匹配',
+    field: 'descriptionMatch',
+    required: false,
+    component: 'InputTextArea',
+    componentProps: {
+      autosize: true
+    }
+  },
+  {
+    label: '稿件副标题匹配',
+    field: 'subtitleMatch',
+    required: false,
+    component: 'InputTextArea',
+    componentProps: {
+      autosize: true
+    }
+  },
+  {
+    label: '稿件出处匹配',
+    field: 'referenceMatch',
     required: false,
     component: 'InputTextArea',
     componentProps: {
