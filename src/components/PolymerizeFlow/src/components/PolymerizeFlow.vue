@@ -66,6 +66,8 @@ import {
 import StartNode from './nodes/StartNode.vue'
 import ListRuleNode from './nodes/ListRuleNode.vue'
 import ArticleRuleNode from './nodes/ArticleRuleNode.vue'
+import ApiListRuleNode from './nodes/ApiListRuleNode.vue'
+import ApiArticleRuleNode from './nodes/ApiArticleRuleNode.vue'
 import { testApi, configureRuleApi, getRuleApi } from './PolymerizeFlow.api'
 import { defineComponent } from "@vue/runtime-core";
 import {useMessage} from "/@/hooks/web/useMessage";
@@ -87,25 +89,39 @@ export default defineComponent (
       // console.log("informationSourceId: " + informationSourceId.value)
       const listNodes = readonly([
         {
-          name: '开始',
+          name: '开始节点',
           color: '#49494970',
           item: 'StartNode',
           input:0,
           output:1
         },
         {
-          name: '列表采集节点',
+          name: 'PC列表采集节点',
           color: '#ff9900',
           item: 'ListRuleNode',
           input:1,
           output:1
         },
         {
-          name: '稿件采集节点',
+          name: 'PC稿件采集节点',
           color: '#ff9900',
           item: 'ArticleRuleNode',
           input:1,
           output:0
+        },
+        {
+          name: 'API列表采集节点',
+          color: '#ff9900',
+          item: 'ApiListRuleNode',
+          input:1,
+          output:1
+        },
+        {
+          name: 'API稿件采集节点',
+          color: '#ff9900',
+          item: 'ApiArticleRuleNode',
+          input:1,
+          output:1
         },
       ])
       const editor = shallowRef({});
@@ -204,6 +220,8 @@ export default defineComponent (
         editor.value.registerNode('StartNode', StartNode, {}, {});
         editor.value.registerNode('ArticleRuleNode', ArticleRuleNode, {}, {});
         editor.value.registerNode('ListRuleNode', ListRuleNode, {}, {});
+        editor.value.registerNode('ApiListRuleNode', ApiListRuleNode, {}, {});
+        editor.value.registerNode('ApiArticleRuleNode', ApiArticleRuleNode, {}, {});
 
         // 按信源ID查出配置
         let param = {

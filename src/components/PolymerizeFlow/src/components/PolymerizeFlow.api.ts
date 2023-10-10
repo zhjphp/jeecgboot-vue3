@@ -6,6 +6,8 @@ export enum Api {
   getRuleApi = '/polymerize/informationSourceRule/getRule',
   checkListRuleApi = '/polymerize/informationSourceRule/checkListRule',
   checkArticleRuleApi = '/polymerize/informationSourceRule/checkArticleRule',
+  checkApiListRuleApi = '/polymerize/informationSourceRule/checkApiListRule',
+  checkApiArticleRuleApi = '/polymerize/informationSourceRule/checkApiArticleRule',
 }
 /**
  * 测试接口
@@ -40,6 +42,22 @@ export const checkListRule = (params?) => {
  */
 export const checkArticleRule = (params?) => {
   return defHttp.post({ url: Api.checkArticleRuleApi, params, timeout: 180 * 1000 }, { isTransformResponse: false })
+}
+
+/**
+ * 测试列表规则
+ * @param params
+ */
+export const checkApiListRule = (params?) => {
+  return defHttp.post({ url: Api.checkApiListRuleApi, params, timeout: 180 * 1000 }, { isTransformResponse: false })
+}
+
+/**
+ * 测试列表规则
+ * @param params
+ */
+export const checkApiArticleRule = (params?) => {
+  return defHttp.post({ url: Api.checkApiArticleRuleApi, params, timeout: 180 * 1000 }, { isTransformResponse: false })
 }
 
 

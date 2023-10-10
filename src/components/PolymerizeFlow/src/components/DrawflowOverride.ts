@@ -18,9 +18,12 @@ class DrawflowOverride extends Drawflow {
           this.connection_ele.classList.add("node_in_" + s), this.connection_ele.classList.add("node_out_" + l), this.connection_ele.classList.add(c), this.connection_ele.classList.add(o);
           var d = s.slice(5), a = l.slice(5);
           // 加入自定义节点链接逻辑
-          if (this.getNodeFromId(a).name == "ListRuleNode" && this.getNodeFromId(d).name == "ListRuleNode") {
+          if ( this.getNodeFromId(a).name == "ListRuleNode" && (this.getNodeFromId(d).name == "ListRuleNode" || this.getNodeFromId(d).name == "ApiListRuleNode" || this.getNodeFromId(d).name == "ApiArticleRuleNode" ) ) {
             // 列表节点后不能链接列表节点
-            alert("【列表节点采集节】点后只能链接【稿件采集节点】")
+            alert("【PC列表节点采集节】点后只能链接【PC稿件采集节点】")
+            this.dispatch("connectionCancel", !0), this.connection_ele.remove(), this.connection_ele = null
+          } else if( this.getNodeFromId(a).name == "ApiListRuleNode" && (this.getNodeFromId(d).name == "ListRuleNode" || this.getNodeFromId(d).name == "ApiListRuleNode" || this.getNodeFromId(d).name == "ArticleRuleNode" ) ) {
+            alert("【API列表节点采集节】点后只能链接【API稿件采集节点】")
             this.dispatch("connectionCancel", !0), this.connection_ele.remove(), this.connection_ele = null
           } else {
             this.drawflow.drawflow[this.module].data[a].outputs[c].connections.push({
